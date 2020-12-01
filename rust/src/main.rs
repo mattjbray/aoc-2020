@@ -19,14 +19,26 @@ fn main() {
                 .takes_value(true)
                 .required(true),
         )
+        .arg(
+            Arg::with_name("file")
+                .short("f")
+                .long("file")
+                .value_name("DATA")
+                .takes_value(true)
+                .required(true),
+        )
         .get_matches();
 
+    let day = matches.value_of("day").unwrap();
+    let part = matches.value_of("part").unwrap();
+    let file = matches.value_of("file").unwrap();
+
     match (
-        matches.value_of("day").unwrap(),
-        matches.value_of("part").unwrap(),
+        day,
+        part,
     ) {
-        ("1", "1") => day_1::part_1(),
-        ("1", "2") => day_1::part_2(),
+        ("1", "1") => day_1::part_1(&file),
+        ("1", "2") => day_1::part_2(&file),
         _ => println!("Not solved yet"),
     }
 }

@@ -1,9 +1,9 @@
 use itertools::Itertools;
 use std::fs;
 
-fn read_input() -> Vec<i32> {
+fn read_input(file: &str) -> Vec<i32> {
     let contents =
-        fs::read_to_string("../data/day_1.txt").expect("Something went wrong reading the file");
+        fs::read_to_string(file).expect("Something went wrong reading the file");
 
     contents
         .lines()
@@ -20,12 +20,12 @@ fn solve(input: &[i32], n: usize) -> i32 {
     return 0;
 }
 
-pub fn part_1() {
-    println!("{}", solve(&read_input(), 2));
+pub fn part_1(file: &str) {
+    println!("{}", solve(&read_input(file), 2));
 }
 
-pub fn part_2() {
-    println!("{}", solve(&read_input(), 3));
+pub fn part_2(file: &str) {
+    println!("{}", solve(&read_input(file), 3));
 }
 
 #[cfg(test)]
