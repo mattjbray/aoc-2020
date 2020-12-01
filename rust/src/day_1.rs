@@ -12,9 +12,9 @@ fn read_input(file: &str) -> Vec<i32> {
 }
 
 fn solve(input: &[i32], n: usize) -> i32 {
-    for c in input.iter().combinations(n) {
-        if c.iter().copied().sum::<i32>() == 2020 {
-            return c.iter().copied().product();
+    for c in input.iter().copied().combinations(n) {
+        if c.iter().sum::<i32>() == 2020 {
+            return c.iter().product();
         }
     }
     return 0;
