@@ -2,8 +2,7 @@ use itertools::Itertools;
 use std::fs;
 
 fn read_input(file: &str) -> Vec<i32> {
-    let contents =
-        fs::read_to_string(file).expect("Something went wrong reading the file");
+    let contents = fs::read_to_string(file).expect("Something went wrong reading the file");
 
     contents
         .lines()
@@ -12,12 +11,13 @@ fn read_input(file: &str) -> Vec<i32> {
 }
 
 fn solve(input: &[i32], n: usize) -> i32 {
-    for c in input.iter().copied().combinations(n) {
-        if c.iter().sum::<i32>() == 2020 {
-            return c.iter().product();
-        }
-    }
-    return 0;
+    input
+        .iter()
+        .copied()
+        .combinations(n)
+        .find(|c| c.iter().sum::<i32>() == 2020)
+        .map(|c| c.iter().product())
+        .expect("No items sum to 2020")
 }
 
 pub fn part_1(file: &str) {
