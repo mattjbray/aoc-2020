@@ -1,4 +1,6 @@
 use clap::{App, Arg};
+#[macro_use]
+extern crate lazy_static;
 
 fn main() {
     let matches = App::new("Advent of Code 2020")
@@ -33,14 +35,14 @@ fn main() {
     let part = matches.value_of("part").unwrap();
     let file = matches.value_of("file").unwrap();
 
-    match (
-        day,
-        part,
-    ) {
+    match (day, part) {
         ("1", "1") => day_1::part_1(&file),
         ("1", "2") => day_1::part_2(&file),
+        ("2", "1") => day_2::part_1(&file),
+        ("2", "2") => day_2::part_2(&file),
         _ => println!("Not solved yet"),
     }
 }
 
 mod day_1;
+mod day_2;
