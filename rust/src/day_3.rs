@@ -34,7 +34,7 @@ fn read_input(file: &str) -> Map {
     parse(&contents)
 }
 
-fn run(map: &Map) -> u32 {
+fn count_trees(map: &Map, (right, down): &(usize, usize)) -> u32 {
     let mut x = 0;
     let mut y = 0;
 
@@ -44,8 +44,8 @@ fn run(map: &Map) -> u32 {
         if map.trees.contains(&(x, y)) {
             count += 1;
         }
-        x = (x + 3) % map.width;
-        y = y + 1;
+        x = (x + right) % map.width;
+        y = y + down;
     }
 
     count
@@ -53,7 +53,23 @@ fn run(map: &Map) -> u32 {
 
 pub fn part_1(file: &str) {
     let map = read_input(file);
-    println!("{}", run(&map));
+    println!("{}", count_trees(&map, &(3, 1)));
+}
+
+fn slopes() -> Vec<(usize, usize)> {
+    vec![(1, 1), (3, 1), (5, 1), (7, 1), (1, 2)]
+}
+
+fn run_part_2(map: &Map) -> u32 {
+    slopes()
+        .iter()
+        .map(|slope| count_trees(&map, &slope))
+        .product()
+}
+
+pub fn part_2(file: &str) {
+    let map = read_input(file);
+    println!("{}", run_part_2(&map));
 }
 
 #[cfg(test)]
@@ -103,6 +119,12 @@ mod tests {
     #[test]
     fn test_run() {
         let parsed = parse(&input());
-        assert_eq!(run(&parsed), 7);
+        assert_eq!(count_trees(&parsed, &(3, 1)), 7);
+    }
+
+    #[test]
+    fn test_run_part_2() {
+        let parsed = parse(&input());
+        assert_eq!(run_part_2(&parsed), 336);
     }
 }

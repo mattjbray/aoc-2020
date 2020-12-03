@@ -41,6 +41,7 @@ fn main() {
         ("2", "1") => day_2::part_1(&file),
         ("2", "2") => day_2::part_2(&file),
         ("3", "1") => day_3::part_1(&file),
+        ("3", "2") => day_3::part_2(&file),
         _ => println!("Not solved yet"),
     }
 }
