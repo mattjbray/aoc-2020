@@ -40,9 +40,11 @@ fn main() {
         ("1", "2") => day_1::part_2(&file),
         ("2", "1") => day_2::part_1(&file),
         ("2", "2") => day_2::part_2(&file),
+        ("3", "1") => day_3::part_1(&file),
         _ => println!("Not solved yet"),
     }
 }
 
 mod day_1;
 mod day_2;
+mod day_3;
