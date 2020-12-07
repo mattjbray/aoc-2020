@@ -42,6 +42,7 @@ fn main() {
         ("2", "2") => day_2::part_2(&file),
         ("3", "1") => day_3::part_1(&file),
         ("3", "2") => day_3::part_2(&file),
+        ("4", "1") => day_4::part_1(&file),
         _ => println!("Not solved yet"),
     }
 }
@@ -49,3 +50,4 @@ fn main() {
 mod day_1;
 mod day_2;
 mod day_3;
+mod day_4;
